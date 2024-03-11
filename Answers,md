@@ -1,0 +1,25 @@
+1Ans:
+
+In the provided schema, the relationship between the "Product" and "Product_Category" entities is established through a foreign key relationship. Specifically:
+
+1. The "Product" entity has a column named 'category_id` (int).
+
+2. The category_id` column in the "Product" entity is a foreign key that references the id column in the "Product_Category" entity.
+
+This foreign key relationship indicates that each product in the "Product" table is associated with a category identified by the id column in the "Product_Category" table.
+The 'category_id` in the "Product" table serves as a reference to a specific category's id in the "Product_Category" table.
+In practical terms, this means that you can link each product to a particular category using the 'category_id`. It ensures referential integrity, meaning that the values in the category_id` column in the "Product" table must correspond to valid values in the id column of the "Product_Category" table.
+This relationship helps organize and categorize products within your database.
+
+2Ans:
+
+To ensure that each product in the "Product" table has a valid category assigned to it, you can enforce a foreign key constraint.
+In the context of your schema, it means setting up the 'category_id` column in the "Product" table as a foreign key that references the id column in the "Product_Category" table.
+
+Here is an example of how you might define this foreign key constraint:
+
+ALTER TABLE product ADD CONSTRAINT fk product_category FOREIGN KEY (category_id) REFERENCES product category(id);
+This SQL statement adds a foreign key constraint named 'fk_product_category to the "Product" table.
+It ensures that the values in the category_id column must correspond to valid values in the id column of the "Product_Category" table.
+Enforcing this foreign key constraint helps maintain referential integrity, ensuring that each product is associated with an existing and valid category.
+If an attempt is made to insert or update a product with a non- existent categor  will result in a constraints violation error.
